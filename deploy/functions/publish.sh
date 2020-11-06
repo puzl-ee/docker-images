@@ -27,7 +27,7 @@ run_publish_image() {
           --build-arg INTERPRETER_VERSION=${interpreter_version} \
           -t ${image} .
       docker push ${image}
-      docker rmi ${image}
+      docker rmi --force ${image}
     done
   else
     image="${image_repo}/${image_name}:${image_tag}"
@@ -35,6 +35,6 @@ run_publish_image() {
       docker build \
         -t ${image} .
     docker push ${image}
-    docker rmi ${image}
+    docker rmi --force ${image}
   fi
 }

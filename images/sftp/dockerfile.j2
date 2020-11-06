@@ -8,6 +8,7 @@
 {{ env.general() }}
 {{ docker.shell('["/bin/bash", "-c"]') }}
 {{ required.install_main_pakage() }}
+{{ required.install_tini("v0.19.0") }}
 {{ required.add_user() }}
 {{ configs.general() }}
 {{ required.configure() }}
@@ -17,3 +18,4 @@
 {{ docker.workdir("/tmp") }}
 {{ docker.user("$UID") }}
 {{ docker.cmd('["/bin/sh", "-c", "exit 0"]') }}
+
